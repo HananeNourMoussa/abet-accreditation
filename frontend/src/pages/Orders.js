@@ -15,6 +15,7 @@ import {
   Container,
   Typography,
   TableContainer,
+  Tooltip,
 } from "@material-ui/core";
 // components
 import Page from "../components/Page";
@@ -28,10 +29,11 @@ import ORDERLIST from "../_mocks_/orders";
 
 const TABLE_HEAD = [
   { id: "id", label: "ID", alignRight: false },
-  { id: "client_name", label: "Client", alignRight: false },
-  { id: "total", label: "Total", alignRight: false },
-  { id: "items", label: "N° de Produits", alignRight: false },
-  { id: "date", label: "Date", alignRight: false },
+  { id: "name", label: "Name", alignRight: false },
+  { id: "desscription", label: "Description", alignRight: false },
+  { id: "csc", label: "CSC", alignRight: false },
+  { id: "ems", label: "EMS", alignRight: false },
+  { id: "ge", label: "GE", alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -117,7 +119,7 @@ export default function Order() {
           <Button
             variant="contained"
             component={RouterLink}
-            to="#"
+            to="create"
             startIcon={<Icon icon={plusFill} />}
           >
             New Student Outcome
@@ -149,9 +151,13 @@ export default function Order() {
                     const {
                       id,
                       name,
-                      total,
-                      items,
-                      date
+                      description,
+                      csc,
+                      ge,
+                      ems,
+                      cscnum,
+                      genum,
+                      emsnum
                     } = row;
 
                     return (
@@ -166,14 +172,26 @@ export default function Order() {
                           </Typography>
                         </TableCell>
                         <TableCell align="left">{name || "-"}</TableCell>
-                        <TableCell align="left">
-                          {total || "-"}
+                        {/* <TableCell align="left">
+                          {description || "-"}
+                        </TableCell> */}
+                        <TableCell padding="normal" component="th" scope="row">
+                          <Tooltip title={description}>
+                          <Typography>
+                              {description.length > 70
+                                ? description.slice(0, 70) + "..."
+                                : description}
+                            </Typography>
+                          </Tooltip>
                         </TableCell>
                         <TableCell align="left">
-                          {items}
+                          {csc+"% ("+ cscnum +")"}
                         </TableCell>
                         <TableCell align="left">
-                          {date.toDateString()}
+                          {ge+"% ("+ genum +")"}
+                        </TableCell>
+                        <TableCell align="left">
+                          {ems +"% ("+ emsnum +")"}
                         </TableCell>
                       </TableRow>
                     );

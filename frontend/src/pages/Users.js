@@ -29,10 +29,11 @@ import USERLIST from "../_mocks_/users";
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: "name", label: "Nom", alignRight: false },
-  { id: "phoneNumber", label: "N° de Téléphone", alignRight: false },
+  { id: "name", label: "Name", alignRight: false },
   { id: "email", label: "Email", alignRight: false },
-  { id: "client_memberSince", label: "Membre Depuis", alignRight: false },
+  { id: "course", label: "Enrolled in", alignRight: false },
+  { id: "major", label: "Major", alignRight: false },
+  { id: "grade", label: "Grade", alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -150,10 +151,11 @@ export default function User() {
                     const {
                       id,
                       name,
-                      memberSince,
-                      phoneNumber,
+                      grade,
+                      major,
                       avatarUrl,
                       email,
+                      course,
                     } = row;
 
                     return (
@@ -174,10 +176,11 @@ export default function User() {
                             </Typography>
                           </Stack>
                         </TableCell>
-                        <TableCell align="left">{phoneNumber || "-"}</TableCell>
                         <TableCell align="left">{email || "-"}</TableCell>
+                        <TableCell align="left">{course || "-"}</TableCell>
+                        <TableCell align="left">{major || "-"}</TableCell>
                         <TableCell align="left">
-                          {memberSince.toDateString()}
+                          {grade + "%"}
                         </TableCell>
                       </TableRow>
                     );

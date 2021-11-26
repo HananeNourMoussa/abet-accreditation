@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import DashboardApp from './pages/Dashboard';
 import Products from './pages/Products';
 import Users from './pages/Users';
+import CreateSO from './pages/CreateSO';
 import Orders from './pages/Orders';
 import UserDetails from './pages/UserDetails';
 import NotFound from './pages/Page404';
@@ -26,6 +27,7 @@ export default function Router() {
         { path: 'users/details', element: <UserDetails /> },
         { path: 'products', element: <Products /> },
         { path: 'orders', element: <Orders /> },
+        { path: 'orders/create', element: <CreateSO /> },
       ]
     },
     {

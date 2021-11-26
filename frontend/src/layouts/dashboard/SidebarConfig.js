@@ -26,11 +26,11 @@ const sidebarConfig = [
       },
       {
         title: "CSC2303",
-        path: "/register",
+        path: "",
       },
       {
         title: "PHY1402",
-        path: "/login",
+        path: "",
       },
     ],
   },
