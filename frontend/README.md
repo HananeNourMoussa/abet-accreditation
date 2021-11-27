@@ -1,40 +1,17 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+##SO##
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 30" src="https://user-images.githubusercontent.com/49244138/143723172-4e0ad1ee-44e3-4805-b5f9-38bd86e57b29.png">
 
-> Free React Admin Dashboard made with Material-UI components and React.
+<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 40" src="https://user-images.githubusercontent.com/49244138/143723177-1499a8ea-11d0-4f29-b954-e41f8b62f829.png">
 
-![preview](public/static/preview.png)
+##Student##
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **7** Demo pages                                      | **40** demo pages                                                 |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 50" src="https://user-images.githubusercontent.com/49244138/143723181-3231895f-e802-4d06-b9c4-43b44b2bdf52.png">
 
-## Page demo
+<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 58" src="https://user-images.githubusercontent.com/49244138/143723183-4e2fee2a-547a-4276-9e08-91a339cd6ff7.png">
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Register](https://minimal-kit-react.vercel.app/register)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+##Assessments##
 
-## Getting started
+<img width="1439" alt="Screen Shot 2021-11-28 at 00 24 08" src="https://user-images.githubusercontent.com/49244138/143723185-82a6b698-4ad1-4e66-9ddc-d0d3d61dd382.png">
 
-- Recommended `node js 14+` and `npm 6+`
-- Install dependencies: `npm install` or `yarn install`
-- Start the server: `npm run start` or `yarn start`
-
-## License
-
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
-
-## Contact us
-
-Email Us: support@minimals.cc
+<img width="1439" alt="Screen Shot 2021-11-28 at 00 24 18" src="https://user-images.githubusercontent.com/49244138/143723186-48a98cf6-039c-4c26-a9d5-f739bb8aeafe.png">
