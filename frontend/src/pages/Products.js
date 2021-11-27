@@ -2,7 +2,7 @@ import { filter } from "lodash";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import plusFill from "@iconify/icons-eva/plus-fill";
-import { Link as RouterLink /*useNavigate*/ } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 // material
 import {
   Card,
@@ -15,26 +15,24 @@ import {
   Container,
   Typography,
   TableContainer,
-  Tooltip,
 } from "@material-ui/core";
 // components
 import Page from "../components/Page";
 import Scrollbar from "../components/Scrollbar";
-import Label from "../components/Label";
 import SearchNotFound from "../components/SearchNotFound";
+
 import { ListHead, ListToolbar } from "../components/_dashboard/user";
 //
-import PRODUCTLIST from "../_mocks_/products";
+import USERLIST from "../_mocks_/products";
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: "designation", label: "Désignation", alignRight: false },
-  { id: "quantity", label: "Quantité", alignRight: false },
-  { id: "selling_price", label: "Prix de Vente", alignRight: false },
-  { id: "pph", label: "PPH", alignRight: false },
-  { id: "acquisition_price", label: "Prix d'achat", alignRight: false },
-  { id: "discount_status", label: "Status", alignRight: false },
+  { id: "id", label: "ID", alignRight: false },
+  { id: "name", label: "Name", alignRight: false },
+  { id: "course", label: "Course", alignRight: false },
+  { id: "grade", label: "Average Grade", alignRight: false },
+  { id: "date", label: "Assesment Date", alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -71,8 +69,8 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function Product() {
-  // const navigate = useNavigate();
+export default function User() {
+  const navigate = useNavigate();
   const [order, setOrder] = useState("asc");
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
@@ -86,7 +84,7 @@ export default function Product() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = PRODUCTLIST.map((n) => n.name);
+      const newSelecteds = USERLIST.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -97,16 +95,16 @@ export default function Product() {
     setFilterName(event.target.value);
   };
 
-  const filteredProducts = applySortFilter(
-    PRODUCTLIST,
+  const filteredUsers = applySortFilter(
+    USERLIST,
     getComparator(order, orderBy),
     filterName
   );
 
-  const isProductNotFound = filteredProducts.length === 0;
+  const isUserNotFound = filteredUsers.length === 0;
 
   return (
-    <Page title="Produits">
+    <Page title="Assesments">
       <Container>
         <Stack
           direction="row"
@@ -115,15 +113,15 @@ export default function Product() {
           mb={5}
         >
           <Typography variant="h4" gutterBottom>
-            Produits
+            Assesments
           </Typography>
           <Button
             variant="contained"
             component={RouterLink}
-            to="#"
+            to="create"
             startIcon={<Icon icon={plusFill} />}
           >
-            Ajouter Produit
+            Create Assesment
           </Button>
         </Stack>
 
@@ -132,7 +130,7 @@ export default function Product() {
             numSelected={selected.length}
             filterName={filterName}
             onFilterName={handleFilterByName}
-            placeholder="Rechercher Produits..."
+            placeholder="Search Assessment..."
           />
 
           <Scrollbar>
@@ -142,64 +140,37 @@ export default function Product() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={PRODUCTLIST.length}
+                  rowCount={USERLIST.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredProducts.map((row) => {
-                    const {
-                      id,
-                      name,
-                      quantity,
-                      pph,
-                      selling_price,
-                      acquisition_price,
-                      status,
-                    } = row;
+                  {filteredUsers.map((row) => {
+                    const { id, name, grade, course, date } =
+                      row;
 
                     return (
-                      <TableRow
-                        hover
-                        key={id}
-                        // onClick={() => navigate("/dashboard/user/details")}
-                      >
+                      <TableRow hover key={id} onClick={() => navigate("")}>
                         <TableCell padding="normal" component="th" scope="row">
-                          <Tooltip title={name}>
-                            <Typography variant="subtitle2" noWrap>
-                              { name.length > 30 ? name.slice(0,30) + "..." : name}
-                            </Typography>
-                          </Tooltip>
+                          <Typography variant="subtitle2" noWrap>
+                            {id}
+                          </Typography>
                         </TableCell>
-                        <TableCell align="left">{quantity}</TableCell>
-                        <TableCell align="left">
-                          {selling_price || "-"}
-                        </TableCell>
-                        <TableCell align="left">
-                          {acquisition_price || "-"}
-                        </TableCell>
-                        <TableCell align="left">{pph || "-"}</TableCell>
-                        <TableCell align="left">
-                          <Label
-                            variant="ghost"
-                            color={
-                              (status === "Non Soldé" && "error") || "success"
-                            }
-                          >
-                            {status}
-                          </Label>
-                        </TableCell>
+                        <TableCell align="left">{name || "-"}</TableCell>
+                        <TableCell align="left">{course || "-"}</TableCell>
+                        <TableCell align="left">{grade + "%"}</TableCell>
+                        <TableCell align="left">{date.toDateString()}</TableCell>
                       </TableRow>
                     );
                   })}
-                  {filteredProducts && (
+                  {filteredUsers && (
                     <TableRow>
                       <TableCell colSpan={6} />
                     </TableRow>
                   )}
                 </TableBody>
-                {isProductNotFound && (
+                {isUserNotFound && (
                   <TableBody>
                     <TableRow>
                       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>

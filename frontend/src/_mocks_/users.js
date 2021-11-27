@@ -6,13 +6,16 @@ import { mockImgAvatar } from '../utils/mockImages';
 // ----------------------------------------------------------------------
 
 const users = [...Array(24)].map((_, index) => ({
-  id: faker.datatype.uuid(),
+  id: faker.datatype.number(),
   avatarUrl: mockImgAvatar(index + 1),
   name: faker.name.findName(),
+  grade: faker.random.number(100),
+  course: sample(['EGR', 'PHY', 'CHE', 'CSC']) + sample(["1402", '1401', "2303"]) ,
   phoneNumber: faker.phone.phoneNumberFormat(),
-  email: faker.internet.email(),
+  email: faker.name.firstName()+"@aui.ma",
+  major: sample(['GE', 'EMS', 'CSC']),
   status: sample(['active', 'banned']),
-  memberSince: faker.date.past()
+  date: faker.date.past()
 }));
 
 export default users;

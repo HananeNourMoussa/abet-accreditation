@@ -3,9 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { useFormik, Form, FormikProvider } from "formik";
 
 // material
-import { Stack, TextField, Grid } from "@material-ui/core";
+import {
+  Stack,
+  TextField,
+  Grid,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Input,
+  Button,
+} from "@material-ui/core";
 import { LoadingButton } from "@material-ui/lab";
 import { Save } from "@material-ui/icons";
+
+/*<Input accept="image/*" id="contained-button-file" multiple type="file" />
+<Button variant="contained" component="span">
+  Upload
+</Button>*/
 
 // import { LoadingButton } from '@material-ui/lab';
 
@@ -32,7 +47,7 @@ export default function UserForm({ EinitialValues }) {
     },
     validationSchema: Schema,
     onSubmit: () => {
-      navigate("/dashboard/users/details", { replace: true });
+      navigate("/dashboard/products/", { replace: true });
     },
   });
 
@@ -64,43 +79,25 @@ export default function UserForm({ EinitialValues }) {
                 id="firstName"
                 value={values.firstName}
                 onChange={formik.handleChange}
-                label="First Name"
+                label="Name"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                id="lastName"
-                value={values.lastName}
-                onChange={formik.handleChange}
-                label="Last Name"
-              />
-            </Grid>
-          </Grid>
-          <Grid
-            container
-            spacing={3}
-            alignItems="center"
-            justifyContent="space-between"
-            mt={0}
-          >
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                id="phoneNumber"
-                value={values.phoneNumber}
-                onChange={formik.handleChange}
-                label="Phone Number"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Email"
-                id="email"
-                onChange={formik.handleChange}
-                type="email"
-              />
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Course</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  fullWidth
+                  id="lastName"
+                  value={values.lastName}
+                  onChange={formik.handleChange}
+                  label="Last Name"
+                >
+                  <MenuItem value={10}>CSC1401</MenuItem>
+                  <MenuItem value={20}>CSC2303</MenuItem>
+                  <MenuItem value={30}>PHY1402</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
 
@@ -112,22 +109,47 @@ export default function UserForm({ EinitialValues }) {
             mt={0}
           >
             <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                id="country"
-                value={values.country}
-                onChange={formik.handleChange}
-                label="country"
-              />
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Course</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  fullWidth
+                  id="lastName"
+                  value={values.lastName}
+                  onChange={formik.handleChange}
+                  label="Last Name"
+                >
+                  <MenuItem value={10}>Quiz</MenuItem>
+                  <MenuItem value={20}>Midterm</MenuItem>
+                  <MenuItem value={30}>Final</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="City"
+                id="city"
                 value={values.city}
                 onChange={formik.handleChange}
-                id="city"
+                label="Assessment Date"
               />
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            spacing={3}
+            alignItems="center"
+            justifyContent="space-between"
+            mt={0}
+          >
+            <Grid item xs={12} sm={12}>
+              <label htmlFor="contained-button-file">
+                <Input accept="file/*" id="contained-button-file" type="file" />
+                <Button variant="contained" component="span">
+                  Import Grades
+                </Button>
+              </label>
             </Grid>
           </Grid>
           <Grid
@@ -137,30 +159,7 @@ export default function UserForm({ EinitialValues }) {
             justifyContent="space-between"
             mt={0}
             mb={3}
-          >
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                id="address"
-                value={values.address}
-                onChange={formik.handleChange}
-                label="Address"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Date of Birth"
-                value={values.date}
-                onChange={formik.handleChange}
-                id="date"
-                //defaultValue="2017-05-24"
-                // InputLabelProps={{
-                //   shrink: true,
-                // }}
-              />
-            </Grid>
-          </Grid>
+          ></Grid>
         </Stack>
 
         <LoadingButton
@@ -171,7 +170,7 @@ export default function UserForm({ EinitialValues }) {
           loading={isSubmitting}
           startIcon={<Save />}
         >
-          Create new Student
+          Create new Assessment
         </LoadingButton>
       </Form>
     </FormikProvider>
