@@ -13,7 +13,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Container,
+  // Container,
   Typography,
   TableContainer,
 } from "@material-ui/core";
@@ -24,7 +24,7 @@ import SearchNotFound from "../components/SearchNotFound";
 
 import { ListHead, ListToolbar } from "../components/_dashboard/user";
 //
-import USERLIST from "../_mocks_/users";
+import USERLIST from "../_mocks_/students";
 
 // ----------------------------------------------------------------------
 
@@ -107,7 +107,7 @@ export default function User() {
 
   return (
     <Page title="Students">
-      <Container>
+      {/* <Container> */}
         <Stack
           direction="row"
           alignItems="center"
@@ -197,7 +197,7 @@ export default function User() {
             </TableContainer>
           </Scrollbar>
         </Card>
-      </Container>
+      {/* </Container> */}
     </Page>
   );
 }

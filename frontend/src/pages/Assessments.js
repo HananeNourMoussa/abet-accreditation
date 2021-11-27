@@ -12,7 +12,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Container,
+  // Container,
   Typography,
   TableContainer,
 } from "@material-ui/core";
@@ -23,7 +23,7 @@ import SearchNotFound from "../components/SearchNotFound";
 
 import { ListHead, ListToolbar } from "../components/_dashboard/user";
 //
-import USERLIST from "../_mocks_/products";
+import USERLIST from "../_mocks_/assessment";
 
 // ----------------------------------------------------------------------
 
@@ -105,7 +105,7 @@ export default function User() {
 
   return (
     <Page title="Assesments">
-      <Container>
+      {/* <Container> */}
         <Stack
           direction="row"
           alignItems="center"
@@ -113,7 +113,7 @@ export default function User() {
           mb={5}
         >
           <Typography variant="h4" gutterBottom>
-            Assesments
+            Assessments
           </Typography>
           <Button
             variant="contained"
@@ -121,7 +121,7 @@ export default function User() {
             to="create"
             startIcon={<Icon icon={plusFill} />}
           >
-            Create Assesment
+            Create Assessment
           </Button>
         </Stack>
 
@@ -183,7 +183,7 @@ export default function User() {
             </TableContainer>
           </Scrollbar>
         </Card>
-      </Container>
+      {/* </Container> */}
     </Page>
   );
 }

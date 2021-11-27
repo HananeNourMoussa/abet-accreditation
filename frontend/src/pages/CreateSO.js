@@ -65,7 +65,7 @@ export default function CreateSO() {
             sm={12} //{12 : 6}
             md={12} //{ 6 : 3}
           >
-            <Card sx={{ position: "relative" }} style={{ minHeight: "400px" }}>
+            <Card sx={{ position: "relative" }}>
               <CardContent>
                 <SOForm />
               </CardContent>

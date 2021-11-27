@@ -103,42 +103,6 @@ export default function UserForm({ EinitialValues }) {
             justifyContent="space-between"
             mt={0}
           >
-            <Grid item xs={12} sm={4}>
-              <TextField
-                fullWidth
-                id="phoneNumber"
-                value={values.phoneNumber}
-                onChange={formik.handleChange}
-                label="CSC Significance"
-              />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TextField
-                fullWidth
-                id="phoneNumber"
-                value={values.city}
-                onChange={formik.handleChange}
-                label="GE Significance"
-              />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TextField
-                fullWidth
-                id="phoneNumber"
-                value={values.address}
-                onChange={formik.handleChange}
-                label="EMS Significance"
-              />
-            </Grid>
-          </Grid>
-
-          <Grid
-            container
-            spacing={3}
-            alignItems="center"
-            justifyContent="space-between"
-            mt={0}
-          >
             <Grid item xs={12} sm={12}>
               <TextField
                 id="country"

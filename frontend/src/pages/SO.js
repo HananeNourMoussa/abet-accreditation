@@ -12,7 +12,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Container,
+  // Container,
   Typography,
   TableContainer,
   Tooltip,
@@ -106,7 +106,7 @@ export default function Order() {
 
   return (
     <Page title="Student Outcomes">
-      <Container>
+      {/* <Container> */}
         <Stack
           direction="row"
           alignItems="center"
@@ -215,7 +215,7 @@ export default function Order() {
             </TableContainer>
           </Scrollbar>
         </Card>
-      </Container>
+      {/* </Container> */}
     </Page>
   );
 }
