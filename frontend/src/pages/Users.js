@@ -30,6 +30,7 @@ import USERLIST from "../_mocks_/users";
 
 const TABLE_HEAD = [
   { id: "name", label: "Name", alignRight: false },
+  { id: "id", label: "ID", alignRight: false },
   { id: "email", label: "Email", alignRight: false },
   { id: "course", label: "Enrolled in", alignRight: false },
   { id: "major", label: "Major", alignRight: false },
@@ -119,7 +120,7 @@ export default function User() {
           <Button
             variant="contained"
             component={RouterLink}
-            to="#"
+            to="details"
             startIcon={<Icon icon={plusFill} />}
           >
             Add Student
@@ -148,22 +149,11 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.map((row) => {
-                    const {
-                      id,
-                      name,
-                      grade,
-                      major,
-                      avatarUrl,
-                      email,
-                      course,
-                    } = row;
+                    const { id, name, grade, major, avatarUrl, email, course } =
+                      row;
 
                     return (
-                      <TableRow
-                        hover
-                        key={id}
-                        onClick={() => navigate("/dashboard/users/details")}
-                      >
+                      <TableRow hover key={id} onClick={() => navigate("")}>
                         <TableCell padding="normal" component="th" scope="row">
                           <Stack
                             direction="row"
@@ -176,12 +166,15 @@ export default function User() {
                             </Typography>
                           </Stack>
                         </TableCell>
+                        <TableCell padding="normal" component="th" scope="row">
+                          <Typography variant="subtitle2" noWrap>
+                            {id}
+                          </Typography>
+                        </TableCell>
                         <TableCell align="left">{email || "-"}</TableCell>
                         <TableCell align="left">{course || "-"}</TableCell>
                         <TableCell align="left">{major || "-"}</TableCell>
-                        <TableCell align="left">
-                          {grade + "%"}
-                        </TableCell>
+                        <TableCell align="left">{grade + "%"}</TableCell>
                       </TableRow>
                     );
                   })}

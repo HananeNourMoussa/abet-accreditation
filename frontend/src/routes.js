@@ -11,6 +11,7 @@ import Users from './pages/Users';
 import CreateSO from './pages/CreateSO';
 import Orders from './pages/Orders';
 import UserDetails from './pages/UserDetails';
+import CreateAssessment from './pages/CreateAssessment';
 import NotFound from './pages/Page404';
 
 // ----------------------------------------------------------------------
@@ -27,6 +28,7 @@ export default function Router() {
         { path: 'users/details', element: <UserDetails /> },
         { path: 'products', element: <Products /> },
         { path: 'orders', element: <Orders /> },
+        { path: 'products/create', element: <CreateAssessment /> },
         { path: 'orders/create', element: <CreateSO /> },
       ]
     },

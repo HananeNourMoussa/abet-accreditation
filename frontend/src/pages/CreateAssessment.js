@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 
 import {
-  SOForm,
+    AssessmentForm,
 } from "../components/_dashboard/user";
 
 // material
@@ -19,12 +19,9 @@ import {
 // components
 import Page from "../components/Page";
 
-// ----------------------------------------------------------------------
-
-
-export default function CreateSO() {
+export default function CreateAssessment() {
   return (
-    <Page title="Create Student Outcome">
+    <Page title="Create Assessment">
       <Container>
         <Stack
           direction="row"
@@ -34,16 +31,16 @@ export default function CreateSO() {
         >
           <div>
             <Typography variant="h4" gutterBottom>
-              Create Student Outcome
+            Create Assessment
             </Typography>
             <Breadcrumbs separator="•" aria-label="breadcrumb" fontSize={12}>
               <Link
                 color="inherit"
-                to="/dashboard/orders"
+                to="/dashboard/products"
                 component={RouterLink}
                 underline="hover"
               >
-                SO
+                Assessments
               </Link>
               <Link
                 color="textPrimary"
@@ -52,7 +49,7 @@ export default function CreateSO() {
                 aria-current="page"
                 underline="hover"
               >
-                New SO
+                New Assessment
               </Link>
             </Breadcrumbs>
           </div>
@@ -65,9 +62,9 @@ export default function CreateSO() {
             sm={12} //{12 : 6}
             md={12} //{ 6 : 3}
           >
-            <Card sx={{ position: "relative" }} style={{ minHeight: "400px" }}>
+            <Card sx={{ position: "relative" }}>
               <CardContent>
-                <SOForm />
+                <AssessmentForm />
               </CardContent>
             </Card>
           </Grid>

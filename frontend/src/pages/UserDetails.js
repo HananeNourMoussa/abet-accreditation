@@ -35,7 +35,7 @@ export default function UserDetails() {
         >
           <div>
             <Typography variant="h4" gutterBottom>
-              Student's Details
+              Create New Student
             </Typography>
             <Breadcrumbs separator="•" aria-label="breadcrumb" fontSize={12}>
               <Link

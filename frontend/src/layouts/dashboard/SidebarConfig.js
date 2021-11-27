@@ -1,10 +1,10 @@
 import { Icon } from "@iconify/react";
 import pieChart2Fill from "@iconify/icons-eva/pie-chart-2-fill";
 import peopleFill from "@iconify/icons-eva/people-fill";
-import shoppingBagFill from "@iconify/icons-eva/shopping-bag-fill";
 import fileTextFill from "@iconify/icons-eva/file-text-fill";
-import shoppingCartFill from "@iconify/icons-eva/shopping-cart-fill";
-import personAddFill from "@iconify/icons-eva/book-open-fill";
+// import shoppingCartFill from "@iconify/icons-eva/shopping-cart-fill";
+import OpenBook from "@iconify/icons-eva/book-open-fill";
+
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill),
   },
   {
-    title: "Courses",
+    title: "Assessments",
     icon: getIcon(fileTextFill),
     children: [
       {
@@ -37,17 +37,17 @@ const sidebarConfig = [
   {
     title: "Students",
     path: "/dashboard/users",
-    icon: getIcon(shoppingBagFill),
+    icon: getIcon(peopleFill),
   },
   {
     title: "Student Outcomes",
     path: "/dashboard/orders",
-    icon: getIcon(shoppingCartFill),
+    icon: getIcon(OpenBook),
   },
   {
     title: "Register",
     path: "/register",
-    icon: getIcon(personAddFill),
+    icon: getIcon(OpenBook),
   },
   {
     title: "Login",
