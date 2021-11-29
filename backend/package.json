@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "npm run seed && node ./bin/www",
+    "create-db": "psql -U postgres < ./db/seed.sql",
+    "seed": "npm run create-db"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
