@@ -1,6 +1,4 @@
-DROP DATABASE IF EXISTS ABET;
-CREATE DATABASE ABET;
-
+-- The following drop statements are likely not needed.
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS enrollment CASCADE;
 DROP TABLE IF EXISTS sections CASCADE;
@@ -9,12 +7,10 @@ DROP TABLE IF EXISTS assessments CASCADE;
 DROP TABLE IF EXISTS studentoutcomes CASCADE;
 DROP TABLE IF EXISTS students CASCADE;
 DROP TABLE IF EXISTS courses CASCADE;
-
-
 DROP TABLE IF EXISTS assessments;
 
 CREATE TABLE users ( 
-    user_email VARCHAR ( 255 ) PRIMARY KEY, 
+    user_email VARCHAR (255) PRIMARY KEY, 
     user_fname VARCHAR(30),
     user_lname VARCHAR(30)
 ); 
