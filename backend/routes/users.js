@@ -3,7 +3,7 @@ const router = express.Router();
 
 const db = require('../db')
 
-router.get('/', async function(req, res, next) {
+router.get('/', async (req, res, next) => {
   const { rows } = await db.query('SELECT * FROM USERS');
   res.send(rows);
 });

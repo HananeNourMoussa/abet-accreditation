@@ -39,6 +39,7 @@ CREATE TABLE grades (
     std_id INTEGER,
     assess_num INTEGER,
     sec_id VARCHAR(20),
+    grade DECIMAL(5, 2),
     CONSTRAINT related_to_student FOREIGN KEY(std_id) REFERENCES students(std_id) ON UPDATE CASCADE ON DELETE SET NULL,
     CONSTRAINT related_to_section FOREIGN KEY(sec_id) REFERENCES sections(sec_id) ON UPDATE CASCADE ON DELETE SET NULL,
     CONSTRAINT related_to_assessment FOREIGN KEY(assess_num) REFERENCES assessments(assess_num) ON UPDATE CASCADE ON DELETE SET NULL,
