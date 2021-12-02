@@ -2,7 +2,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import {
     AssessmentForm,
-} from "../components/_dashboard/user";
+} from "../components/_dashboard/student";
 
 // material
 import {

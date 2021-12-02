@@ -26,28 +26,26 @@ import { Save } from "@material-ui/icons";
 
 // ----------------------------------------------------------------------
 
-export default function UserForm({ EinitialValues }) {
+export default function UserForm({ name, course, type, date }) {
   const navigate = useNavigate();
 
   const Schema = Yup.object().shape({
-    firstName: Yup.string(),
-    lastName: Yup.string(),
-    email: Yup.string().email("You need a valid email"),
-    phoneNumber: Yup.string(),
-    country: Yup.string(),
-    city: Yup.string(),
-    address: Yup.string(),
-    birthDate: Yup.date(),
+    name: Yup.string(),
+    course: Yup.string(),
+    type: Yup.string(),
+    date: Yup.string(),
   });
 
   const formik = useFormik({
     initialValues: {
-      country: "",
-      city: "",
+      name: name,
+      course: course,
+      type: type,
+      date: date,
     },
     validationSchema: Schema,
     onSubmit: () => {
-      navigate("/dashboard/products/", { replace: true });
+      navigate("/dashboard/assessments/", { replace: true });
     },
   });
 
@@ -62,7 +60,7 @@ export default function UserForm({ EinitialValues }) {
     <FormikProvider value={formik}>
       <Form
         autoComplete="off"
-        initialValues={EinitialValues}
+        // initialValues={EinitialValues}
         noValidate
         onSubmit={handleSubmit}
       >
@@ -76,8 +74,8 @@ export default function UserForm({ EinitialValues }) {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                id="firstName"
-                value={values.firstName}
+                id="name"
+                value={values.name}
                 onChange={formik.handleChange}
                 label="Name"
               />
@@ -88,14 +86,14 @@ export default function UserForm({ EinitialValues }) {
                 <Select
                   labelId="demo-simple-select-label"
                   fullWidth
-                  id="lastName"
-                  value={values.lastName}
+                  id="course"
+                  value={values.course}
                   onChange={formik.handleChange}
-                  label="Last Name"
+                  label="Course"
                 >
-                  <MenuItem value={10}>CSC1401</MenuItem>
-                  <MenuItem value={20}>CSC2303</MenuItem>
-                  <MenuItem value={30}>PHY1402</MenuItem>
+                  <MenuItem value={"CSC1401"}>CSC1401</MenuItem>
+                  <MenuItem value={"CSC2303"}>CSC2303</MenuItem>
+                  <MenuItem value={"PHY1402"}>PHY1402</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -110,26 +108,26 @@ export default function UserForm({ EinitialValues }) {
           >
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Course</InputLabel>
+                <InputLabel id="demo-simple-select-label">Type</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   fullWidth
-                  id="lastName"
-                  value={values.lastName}
+                  id="type"
+                  value={values.type}
                   onChange={formik.handleChange}
-                  label="Last Name"
+                  label="Type"
                 >
-                  <MenuItem value={10}>Quiz</MenuItem>
-                  <MenuItem value={20}>Midterm</MenuItem>
-                  <MenuItem value={30}>Final</MenuItem>
+                  <MenuItem value={"quiz"}>Quiz</MenuItem>
+                  <MenuItem value={"midterm"}>Midterm</MenuItem>
+                  <MenuItem value={"final"}>Final</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                id="city"
-                value={values.city}
+                id="date"
+                value={values.date}
                 onChange={formik.handleChange}
                 label="Assessment Date"
               />
@@ -170,7 +168,11 @@ export default function UserForm({ EinitialValues }) {
           loading={isSubmitting}
           startIcon={<Save />}
         >
-          Create new Assessment
+          { !name ?
+          "Create new Assessment"
+          :
+          "Modify Assessment"
+        } 
         </LoadingButton>
       </Form>
     </FormikProvider>

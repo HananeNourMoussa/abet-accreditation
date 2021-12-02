@@ -2,7 +2,7 @@ import { filter } from "lodash";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import plusFill from "@iconify/icons-eva/plus-fill";
-import { Link as RouterLink /*useNavigate*/ } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 // material
 import {
   Card,
@@ -12,7 +12,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  // Container,
+  Container,
   Typography,
   TableContainer,
   Tooltip,
@@ -21,7 +21,7 @@ import {
 import Page from "../components/Page";
 import Scrollbar from "../components/Scrollbar";
 import SearchNotFound from "../components/SearchNotFound";
-import { ListHead, ListToolbar } from "../components/_dashboard/user";
+import { ListHead, ListToolbar } from "../components/_dashboard/student";
 //
 import ORDERLIST from "../_mocks_/orders";
 
@@ -70,12 +70,19 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function Order() {
-  // const navigate = useNavigate();
+export default function SO() {
+  const navigate = useNavigate();
   const [order, setOrder] = useState("asc");
   const [selected, setSelected] = useState([]);
+  // const [so, setSo] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
   const [filterName, setFilterName] = useState("");
+
+  // useEffect(() => {
+  //   axios.get(URL + `academics/outcomes/${section_id}`).then((res) => {
+  //     setSO(res.data);
+  //   });
+  // });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -92,6 +99,15 @@ export default function Order() {
     setSelected([]);
   };
 
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = so.map((n) => n.name);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
+
   const handleFilterByName = (event) => {
     setFilterName(event.target.value);
   };
@@ -102,11 +118,17 @@ export default function Order() {
     filterName
   );
 
+  // const filteredOrders = applySortFilter(
+  //   so,
+  //   getComparator(order, orderBy),
+  //   filterName
+  // );
+
   const isOrderNotFound = filteredOrders.length === 0;
 
   return (
     <Page title="Student Outcomes">
-      {/* <Container> */}
+      <Container>
         <Stack
           direction="row"
           alignItems="center"
@@ -142,6 +164,7 @@ export default function Order() {
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
                   rowCount={ORDERLIST.length}
+                  // rowCount={so.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -157,14 +180,14 @@ export default function Order() {
                       ems,
                       cscnum,
                       genum,
-                      emsnum
+                      emsnum,
                     } = row;
 
                     return (
                       <TableRow
                         hover
                         key={id}
-                        // onClick={() => navigate("/dashboard/user/details")}
+                        onClick={() => navigate(`details/${id}`)}
                       >
                         <TableCell padding="normal" component="th" scope="row">
                           <Typography variant="subtitle2" noWrap>
@@ -177,7 +200,7 @@ export default function Order() {
                         </TableCell> */}
                         <TableCell padding="normal" component="th" scope="row">
                           <Tooltip title={description}>
-                          <Typography>
+                            <Typography>
                               {description.length > 70
                                 ? description.slice(0, 70) + "..."
                                 : description}
@@ -185,13 +208,13 @@ export default function Order() {
                           </Tooltip>
                         </TableCell>
                         <TableCell align="left">
-                          {csc+"% ("+ cscnum +")"}
+                          {csc + "% (" + cscnum + ")"}
                         </TableCell>
                         <TableCell align="left">
-                          {ge+"% ("+ genum +")"}
+                          {ge + "% (" + genum + ")"}
                         </TableCell>
                         <TableCell align="left">
-                          {ems +"% ("+ emsnum +")"}
+                          {ems + "% (" + emsnum + ")"}
                         </TableCell>
                       </TableRow>
                     );
@@ -215,7 +238,7 @@ export default function Order() {
             </TableContainer>
           </Scrollbar>
         </Card>
-      {/* </Container> */}
+      </Container>
     </Page>
   );
 }

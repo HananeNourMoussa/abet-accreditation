@@ -1,4 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
+import { useState } from "react";
 
 import {
   SOForm,
@@ -23,8 +24,16 @@ import Page from "../components/Page";
 
 
 export default function CreateSO() {
+  //const [so, setSO] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get(URL + `academics/outcomes/${section_id}`).then((res) => {
+  //     setSO(res.data);
+  //   });
+  // });
+  
   return (
-    <Page title="Create Student Outcome">
+    <Page title="Student Outcome Details">
       <Container>
         <Stack
           direction="row"
@@ -34,7 +43,7 @@ export default function CreateSO() {
         >
           <div>
             <Typography variant="h4" gutterBottom>
-              Create Student Outcome
+              Student Outcome Details
             </Typography>
             <Breadcrumbs separator="•" aria-label="breadcrumb" fontSize={12}>
               <Link
@@ -52,8 +61,8 @@ export default function CreateSO() {
                 aria-current="page"
                 underline="hover"
               >
-                New SO
-              </Link>
+                SO Details
+              </Link> 
             </Breadcrumbs>
           </div>
         </Stack>
@@ -67,7 +76,7 @@ export default function CreateSO() {
           >
             <Card sx={{ position: "relative" }}>
               <CardContent>
-                <SOForm />
+                <SOForm name="SO1" assessment="quiz1" description="Modi cum sit in molestias amet qui qui rerum facilis."/>
               </CardContent>
             </Card>
           </Grid>

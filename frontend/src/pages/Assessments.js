@@ -12,7 +12,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  // Container,
+  Container,
   Typography,
   TableContainer,
 } from "@material-ui/core";
@@ -21,7 +21,7 @@ import Page from "../components/Page";
 import Scrollbar from "../components/Scrollbar";
 import SearchNotFound from "../components/SearchNotFound";
 
-import { ListHead, ListToolbar } from "../components/_dashboard/user";
+import { ListHead, ListToolbar } from "../components/_dashboard/student";
 //
 import USERLIST from "../_mocks_/assessment";
 
@@ -72,9 +72,16 @@ function applySortFilter(array, comparator, query) {
 export default function User() {
   const navigate = useNavigate();
   const [order, setOrder] = useState("asc");
+  // const [assessment, setAssessment] = useState([]);
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
   const [filterName, setFilterName] = useState("");
+
+  // useEffect(() => {
+  //   axios.get(URL + `assessments/${section_id}`).then((res) => {
+  //     setAssessment(res.data);
+  //   });
+  // });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -91,6 +98,15 @@ export default function User() {
     setSelected([]);
   };
 
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = assessment.map((n) => n.name);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
+
   const handleFilterByName = (event) => {
     setFilterName(event.target.value);
   };
@@ -101,11 +117,18 @@ export default function User() {
     filterName
   );
 
+  // const filteredUsers = applySortFilter(
+  //   assessment,
+  //   getComparator(order, orderBy),
+  //   filterName
+  // );
+
+
   const isUserNotFound = filteredUsers.length === 0;
 
   return (
     <Page title="Assesments">
-      {/* <Container> */}
+      <Container>
         <Stack
           direction="row"
           alignItems="center"
@@ -140,6 +163,7 @@ export default function User() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
+                  // rowCount={assessment.length}
                   rowCount={USERLIST.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
@@ -151,7 +175,7 @@ export default function User() {
                       row;
 
                     return (
-                      <TableRow hover key={id} onClick={() => navigate("")}>
+                      <TableRow hover key={id} onClick={() => navigate(`details/${id}`)}>
                         <TableCell padding="normal" component="th" scope="row">
                           <Typography variant="subtitle2" noWrap>
                             {id}
@@ -183,7 +207,7 @@ export default function User() {
             </TableContainer>
           </Scrollbar>
         </Card>
-      {/* </Container> */}
+      </Container>
     </Page>
   );
 }

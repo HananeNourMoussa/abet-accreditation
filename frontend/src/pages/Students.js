@@ -13,7 +13,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  // Container,
+  Container, 
   Typography,
   TableContainer,
 } from "@material-ui/core";
@@ -22,7 +22,7 @@ import Page from "../components/Page";
 import Scrollbar from "../components/Scrollbar";
 import SearchNotFound from "../components/SearchNotFound";
 
-import { ListHead, ListToolbar } from "../components/_dashboard/user";
+import { ListHead, ListToolbar } from "../components/_dashboard/student";
 //
 import USERLIST from "../_mocks_/students";
 
@@ -31,7 +31,6 @@ import USERLIST from "../_mocks_/students";
 const TABLE_HEAD = [
   { id: "name", label: "Name", alignRight: false },
   { id: "id", label: "ID", alignRight: false },
-  { id: "email", label: "Email", alignRight: false },
   { id: "course", label: "Enrolled in", alignRight: false },
   { id: "major", label: "Major", alignRight: false },
   { id: "grade", label: "Grade", alignRight: false },
@@ -71,12 +70,19 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function User() {
+export default function Student(props) {
   const navigate = useNavigate();
   const [order, setOrder] = useState("asc");
+  // const [students, setStudents] = useState([]);
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
   const [filterName, setFilterName] = useState("");
+
+  // useEffect(() => {
+  //   axios.get(URL + `students/${section_id}`).then((res) => {
+  //     setStudents(res.data);
+  //   });
+  // });
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -93,6 +99,15 @@ export default function User() {
     setSelected([]);
   };
 
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = students.map((n) => n.name);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
+
   const handleFilterByName = (event) => {
     setFilterName(event.target.value);
   };
@@ -103,11 +118,17 @@ export default function User() {
     filterName
   );
 
+  // const filteredUsers = applySortFilter(
+  //   students,
+  //   getComparator(order, orderBy),
+  //   filterName
+  // );
+
   const isUserNotFound = filteredUsers.length === 0;
 
   return (
     <Page title="Students">
-      {/* <Container> */}
+      <Container>
         <Stack
           direction="row"
           alignItems="center"
@@ -120,7 +141,7 @@ export default function User() {
           <Button
             variant="contained"
             component={RouterLink}
-            to="details"
+            to="create"
             startIcon={<Icon icon={plusFill} />}
           >
             Add Student
@@ -134,7 +155,6 @@ export default function User() {
             onFilterName={handleFilterByName}
             placeholder="Search Student..."
           />
-
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
@@ -143,6 +163,7 @@ export default function User() {
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
                   rowCount={USERLIST.length}
+                  // rowCount={students.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -153,7 +174,7 @@ export default function User() {
                       row;
 
                     return (
-                      <TableRow hover key={id} onClick={() => navigate("")}>
+                      <TableRow hover key={id} onClick={() => navigate(`details/${id}`)}>
                         <TableCell padding="normal" component="th" scope="row">
                           <Stack
                             direction="row"
@@ -171,8 +192,7 @@ export default function User() {
                             {id}
                           </Typography>
                         </TableCell>
-                        <TableCell align="left">{email || "-"}</TableCell>
-                        <TableCell align="left">{course || "-"}</TableCell>
+                        <TableCell align="left">{window.location.pathname.split('/')[3] || "-"}</TableCell>
                         <TableCell align="left">{major || "-"}</TableCell>
                         <TableCell align="left">{grade + "%"}</TableCell>
                       </TableRow>
@@ -197,7 +217,7 @@ export default function User() {
             </TableContainer>
           </Scrollbar>
         </Card>
-      {/* </Container> */}
+      </Container>
     </Page>
   );
 }

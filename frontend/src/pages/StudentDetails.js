@@ -1,8 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
 
-import {
-  UserForm,
-} from "../components/_dashboard/student";
+import { UserForm } from "../components/_dashboard/student";
 
 // material
 import {
@@ -22,10 +20,17 @@ import Page from "../components/Page";
 
 // ----------------------------------------------------------------------
 
-
 export default function UserDetails() {
+  //const [student, setStudent] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get(URL + `academics/outcomes/${section_id}`).then((res) => {
+  //     setStudent(res.data);
+  //   });
+  // });
+  
   return (
-    <Page title="Create Student">
+    <Page title="Student's Details">
       <Container>
         <Stack
           direction="row"
@@ -35,12 +40,12 @@ export default function UserDetails() {
         >
           <div>
             <Typography variant="h4" gutterBottom>
-              Create New Student
+              Student's Details
             </Typography>
             <Breadcrumbs separator="•" aria-label="breadcrumb" fontSize={12}>
               <Link
                 color="inherit"
-                to="/dashboard/users"
+                to="/dashboard/students"
                 component={RouterLink}
                 underline="hover"
               >
@@ -53,7 +58,7 @@ export default function UserDetails() {
                 aria-current="page"
                 underline="hover"
               >
-                New student
+                details
               </Link>
             </Breadcrumbs>
           </div>
@@ -111,7 +116,12 @@ export default function UserDetails() {
           >
             <Card sx={{ position: "relative" }} style={{ minHeight: "300px" }}>
               <CardContent>
-                <UserForm />
+                <UserForm
+                  fname="Alfred"
+                  lname="Ledner"
+                  major="csc"
+                  id="101282"
+                />
               </CardContent>
             </Card>
           </Grid>

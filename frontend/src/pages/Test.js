@@ -37,7 +37,7 @@ export default function ColorTabs() {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <Students></Students>
+          <Students/>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Assessments />

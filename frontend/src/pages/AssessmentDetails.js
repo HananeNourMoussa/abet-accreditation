@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 
 import {
-  SOForm,
+    AssessmentForm,
 } from "../components/_dashboard/student";
 
 // material
@@ -19,12 +19,19 @@ import {
 // components
 import Page from "../components/Page";
 
-// ----------------------------------------------------------------------
+export default function CreateAssessment() {
 
+  //const [assessment, setAssessment] = useState([]);
 
-export default function CreateSO() {
+  // useEffect(() => {
+  //   axios.get(URL + `academics/outcomes/${section_id}`).then((res) => {
+  //     setAssessment(res.data);
+  //   });
+  // });
+  
+
   return (
-    <Page title="Create Student Outcome">
+    <Page title="Assessment's Details">
       <Container>
         <Stack
           direction="row"
@@ -34,16 +41,16 @@ export default function CreateSO() {
         >
           <div>
             <Typography variant="h4" gutterBottom>
-              Create Student Outcome
+            Assessment's Details
             </Typography>
             <Breadcrumbs separator="•" aria-label="breadcrumb" fontSize={12}>
               <Link
                 color="inherit"
-                to="/dashboard/orders"
+                to="/dashboard/products"
                 component={RouterLink}
                 underline="hover"
               >
-                SO
+                Assessments
               </Link>
               <Link
                 color="textPrimary"
@@ -52,7 +59,7 @@ export default function CreateSO() {
                 aria-current="page"
                 underline="hover"
               >
-                New SO
+                New Assessment
               </Link>
             </Breadcrumbs>
           </div>
@@ -67,7 +74,7 @@ export default function CreateSO() {
           >
             <Card sx={{ position: "relative" }}>
               <CardContent>
-                <SOForm />
+                <AssessmentForm name="Quiz2" course="CSC1401" type="quiz" date="2010-03-04" />
               </CardContent>
             </Card>
           </Grid>

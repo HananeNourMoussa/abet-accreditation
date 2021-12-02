@@ -19,28 +19,43 @@ import { Save } from "@material-ui/icons";
 
 // ----------------------------------------------------------------------
 
-export default function UserForm({ EinitialValues }) {
+export default function UserForm({
+  fname,
+  lname,
+  major,
+  id,
+  city,
+  address,
+  dob,
+  country,
+}) {
   const navigate = useNavigate();
 
   const Schema = Yup.object().shape({
     firstName: Yup.string(),
     lastName: Yup.string(),
-    email: Yup.string().email("You need a valid email"),
-    phoneNumber: Yup.string(),
+    id: Yup.string(),
+    major: Yup.string(),
     country: Yup.string(),
     city: Yup.string(),
     address: Yup.string(),
-    birthDate: Yup.date(),
+    birthDate: Yup.string(),
   });
 
   const formik = useFormik({
     initialValues: {
-      country: "",
-      city: "",
+      firstName: fname,
+      lastName: lname,
+      id: id,
+      major: major,
+      country: country,
+      city: city,
+      address: address,
+      birthDate: dob,
     },
     validationSchema: Schema,
     onSubmit: () => {
-      navigate("/dashboard/orders", { replace: true });
+      navigate("/dashboard/", { replace: true });
     },
   });
 
@@ -55,7 +70,7 @@ export default function UserForm({ EinitialValues }) {
     <FormikProvider value={formik}>
       <Form
         autoComplete="off"
-        initialValues={EinitialValues}
+        // initialValues={EinitialValues}
         noValidate
         onSubmit={handleSubmit}
       >
@@ -72,30 +87,19 @@ export default function UserForm({ EinitialValues }) {
                 id="firstName"
                 value={values.firstName}
                 onChange={formik.handleChange}
-                label="Name"
+                label="First Name"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">
-                  Assessment
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  fullWidth
-                  id="lastName"
-                  value={values.lastName}
-                  onChange={formik.handleChange}
-                  label="Last Name"
-                >
-                  <MenuItem value={10}>Quiz1</MenuItem>
-                  <MenuItem value={20}>Midterm1</MenuItem>
-                  <MenuItem value={30}>Quiz2</MenuItem>
-                </Select>
-              </FormControl>
+              <TextField
+                fullWidth
+                id="lastName"
+                value={values.lastName}
+                onChange={formik.handleChange}
+                label="Last Name"
+              />
             </Grid>
           </Grid>
-
           <Grid
             container
             spacing={3}
@@ -103,17 +107,37 @@ export default function UserForm({ EinitialValues }) {
             justifyContent="space-between"
             mt={0}
           >
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Major
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  fullWidth
+                  id="major"
+                  value={values.major}
+                  onChange={formik.handleChange}
+                  label="Major"
+                >
+                  <MenuItem value={"csc"}>CSC</MenuItem>
+                  <MenuItem value={"ge"}>GE</MenuItem>
+                  <MenuItem value={"ems"}>EMS</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <TextField
-                id="country"
-                label="Description"
-                multiline
-                rows={4}
-                defaultValue=""
                 fullWidth
+                label="Id"
+                id="id"
+                value={values.id}
+                onChange={formik.handleChange}
+                type="id"
               />
             </Grid>
           </Grid>
+
           <Grid
             container
             spacing={3}
@@ -122,7 +146,6 @@ export default function UserForm({ EinitialValues }) {
             mt={0}
             mb={3}
           ></Grid>
-
         </Stack>
 
         <LoadingButton
@@ -133,7 +156,7 @@ export default function UserForm({ EinitialValues }) {
           loading={isSubmitting}
           startIcon={<Save />}
         >
-          Create new SO
+          {!fname ? "Create new Student" : "Modify Student"}
         </LoadingButton>
       </Form>
     </FormikProvider>
