@@ -3,12 +3,12 @@ const router = express.Router();
 
 const db = require('../db')
 
-router.get('/students', async (req, res, next) => {
+router.get('/students', async (req, res) => {
     const { rows } = await db.query('SELECT * FROM STUDENT');
     res.send(rows);
 });
 
-router.get('/:section_id', async (req, res, next) => {
+router.get('/:section_id', async (req, res) => {
     const section_id = req.params.section_id;
     // TODO: write query to get student from a certain section, given by section_id
     const query = {
@@ -19,6 +19,17 @@ router.get('/:section_id', async (req, res, next) => {
     res.send(rows)
 });
 
+//NEW
+router.get('/:student_id', async (req, res) => {
+    const std_id = req.params.student_id;
+    // TODO: write query to get student from a certain section, given by section_id
+    const query = {
+        text: 'Select * from student where std_id = $1',
+        values: [std_id]
+    };
+    const { rows } = await db.query(query);
+    res.send(rows)
+});
 router.post('/new', async (req, res) => {
     const { std_id, first_name, last_name, major } = req.body;
     // TODO: write query to insert new student
