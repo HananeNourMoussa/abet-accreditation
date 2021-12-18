@@ -1,17 +1,35 @@
-## SO ##
+## Register ##
+![image](https://user-images.githubusercontent.com/62178890/146625449-44493507-3b4a-42f3-bd44-cca93663cce9.png)
 
-<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 30" src="https://user-images.githubusercontent.com/49244138/143723172-4e0ad1ee-44e3-4805-b5f9-38bd86e57b29.png">
+## Login ##
 
-<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 40" src="https://user-images.githubusercontent.com/49244138/143723177-1499a8ea-11d0-4f29-b954-e41f8b62f829.png">
+![image](https://user-images.githubusercontent.com/62178890/146625458-52296652-9841-48b8-b23a-e267490b7e43.png)
+
+
+## Dashboard ## 
+![image](https://user-images.githubusercontent.com/62178890/146625320-2faf868a-d868-4a5d-97c5-bac7a0fdf740.png)
+
+
+![image](https://user-images.githubusercontent.com/62178890/146625329-ede91a4c-0839-49a3-b2b0-4a1a5d2868d6.png)
+
+
+![image](https://user-images.githubusercontent.com/62178890/146625332-b77b120e-fdac-41f7-a0e5-3a36991e217e.png)
+
+
 
 ## Student ##
 
-<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 50" src="https://user-images.githubusercontent.com/49244138/143723181-3231895f-e802-4d06-b9c4-43b44b2bdf52.png">
+![image](https://user-images.githubusercontent.com/62178890/146625379-a099f979-7348-4383-b4f1-5699b18ad709.png)
+![image](https://user-images.githubusercontent.com/62178890/146625417-144e1d85-0551-45de-95a7-0321bf8e0eb9.png)
 
-<img width="1439" alt="Screen Shot 2021-11-28 at 00 23 58" src="https://user-images.githubusercontent.com/49244138/143723183-4e2fee2a-547a-4276-9e08-91a339cd6ff7.png">
+
+## SO ##
+
+![image](https://user-images.githubusercontent.com/62178890/146625385-5750ce04-fa48-4976-8f65-407b7d057bb6.png)
+![image](https://user-images.githubusercontent.com/62178890/146625424-6abbdcbd-df20-4f6e-b425-a531c29fbd88.png)
+
 
 ## Assessments ##
 
-<img width="1439" alt="Screen Shot 2021-11-28 at 00 24 08" src="https://user-images.githubusercontent.com/49244138/143723185-82a6b698-4ad1-4e66-9ddc-d0d3d61dd382.png">
-
-<img width="1439" alt="Screen Shot 2021-11-28 at 00 24 18" src="https://user-images.githubusercontent.com/49244138/143723186-48a98cf6-039c-4c26-a9d5-f739bb8aeafe.png">
+![image](https://user-images.githubusercontent.com/62178890/146625390-22585bda-c7ed-479a-a2ee-bf8a518a52cf.png)
+ ![image](https://user-images.githubusercontent.com/62178890/146625428-4a8053a7-6a7e-4138-b073-b843f0935c38.png)

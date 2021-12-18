@@ -1,0 +1,60 @@
+Available Courses:
+for course in professor:
+    axios.get(`academics/${course_id}/sections`)
+
+Student:
+
+    get all: 
+    
+    axios.get(`students/${section_id}`)
+
+    create: 
+
+    axios.post('students/new', 
+        {
+            std_id:
+            first_name:
+            last_name:
+            major:
+        }
+    )
+
+    Modify:
+    axios.out(`/${stud_id}`, 
+        {
+            first_name:
+            last_name:
+            major:
+        }
+    )
+
+    View: ??????????????
+
+SO:
+    get all: !!!!! there is no params for section_id
+
+    axios.get(`academics/outcomes`)
+
+    create:
+
+    axios.post(`academics/outcome`,
+        {
+            outcome_num:
+            desc:
+            assess_num:
+            course_code:
+        }
+    )
+
+
+    modify:
+
+    axios.put(`academics/${outcome_num}`,
+        {
+            desc:
+            assess_num:
+        }
+    )
+
+
+    view: ??????????????

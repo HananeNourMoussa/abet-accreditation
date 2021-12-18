@@ -5,7 +5,6 @@ import fileTextFill from "@iconify/icons-eva/file-text-fill";
 // import shoppingCartFill from "@iconify/icons-eva/shopping-cart-fill";
 import OpenBook from "@iconify/icons-eva/book-open-fill";
 
-
 // ----------------------------------------------------------------------
 
 const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
@@ -17,32 +16,22 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill),
   },
   {
-    title: "Assessments",
+    title: "Courses",
     icon: getIcon(fileTextFill),
     children: [
       {
         title: "CSC1401",
-        path: "/dashboard/products",
+        path: "/dashboard/students/CSC1401",
       },
       {
         title: "CSC2303",
-        path: "",
+        path: "/dashboard/students/CSC2303",
       },
       {
         title: "PHY1402",
-        path: "",
+        path: "/dashboard/students/PHY1402",
       },
     ],
-  },
-  {
-    title: "Students",
-    path: "/dashboard/users",
-    icon: getIcon(peopleFill),
-  },
-  {
-    title: "Student Outcomes",
-    path: "/dashboard/orders",
-    icon: getIcon(OpenBook),
   },
   {
     title: "Register",
