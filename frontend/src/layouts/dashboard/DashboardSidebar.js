@@ -114,13 +114,13 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
           <Box sx={{ textAlign: "center" }}>
             <Typography gutterBottom variant="h5" style={{fontWeight : "bold"}}>
-              Any issue ?
+              Any issues?
             </Typography>
           </Box>
 
           <Button
             fullWidth
-            href="https://api.whatsapp.com/send?phone=212658537105"
+            href="https://sd.aui.ma/support/home"
             target="_blank"
             variant="contained"
           >

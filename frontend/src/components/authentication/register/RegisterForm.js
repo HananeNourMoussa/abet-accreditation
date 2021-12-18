@@ -30,7 +30,8 @@ export default function RegisterForm() {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      aui_id: ''
     },
     validationSchema: RegisterSchema,
     onSubmit: () => {
@@ -60,7 +61,20 @@ export default function RegisterForm() {
               error={Boolean(touched.lastName && errors.lastName)}
               helperText={touched.lastName && errors.lastName}
             />
+ 
           </Stack>
+
+        
+
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+          <TextField
+              
+              label="AUI ID"
+              {...getFieldProps('AUI ID')}
+              error={Boolean(touched.aui_id && errors.aui_id)}
+              helperText={touched.aui_id && errors.aui_id}
+            />
+
 
           <TextField
             fullWidth
@@ -71,6 +85,8 @@ export default function RegisterForm() {
             error={Boolean(touched.email && errors.email)}
             helperText={touched.email && errors.email}
           />
+          </Stack>
+
 
           <TextField
             fullWidth

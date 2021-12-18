@@ -73,7 +73,9 @@ export default function BaseOptionChart() {
       theme.palette.warning.main,
       theme.palette.info.main,
       theme.palette.error.main,
-      theme.palette.success.main
+      theme.palette.success.main, 
+      theme.palette.warning.dark,
+      theme.palette.info.dark
     ],
 
     // Chart
@@ -181,7 +183,7 @@ export default function BaseOptionChart() {
         },
         dataLabels: {
           value: LABEL_VALUE,
-          total: LABEL_TOTAL
+          //total:  LABEL_TOTAL 
         }
       },
       // Radar
