@@ -68,10 +68,10 @@ INSERT INTO student VALUES
 (80035), (76287), (82500), (84100);
 INSERT INTO assessment VALUES 
 (1, 'Quiz'), (2, 'Test1'), (3, 'Test2');
-INSERT INTO studentoutcome VALUES 
-(1, 'Learn Java Programming', 1, 'CSC2306'), (2, 'Learn ERD', 2, 'CSC2306'), (3, 'Learn Normal Distribution', 3, 'MTH3331');
 INSERT INTO course VALUES 
 ('CSC2306', 'Advanced programming in Java'), ('CSC2302', 'Data Structures'), ('MTH3331', 'Probability and statistics');
+INSERT INTO studentoutcome VALUES 
+(1, 'Learn Java Programming', 1, 'CSC2306'), (2, 'Learn ERD', 2, 'CSC2306'), (3, 'Learn Normal Distribution', 3, 'MTH3331');
 INSERT INTO section VALUES 
 ('CSC230601', 'CSC2306'),('CSC230202', 'CSC2302'),('MTH333103', 'MTH3331');
 INSERT INTO enrollment VALUES 

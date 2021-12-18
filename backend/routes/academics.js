@@ -29,7 +29,7 @@ router.get('/:professor/sections', async (req, res) => {
     const { rows } = await db.query(query);
     res.send(rows);
 });
-router.delete('/:course', async (req, res) => {
+router.delete('/deletecourse/:course', async (req, res) => {
     const course = req.params.course;
     // TODO: query to delete a course
     const query = {
@@ -40,7 +40,7 @@ router.delete('/:course', async (req, res) => {
     res.send(rows);
 })
 
-router.delete('/:section_id', async (req, res) => {
+router.delete('/deletesection/:section_id', async (req, res) => {
     // same stuff but for section
     const section = req.params.section_id;
     // TODO: query to delete a section
@@ -57,7 +57,7 @@ router.get('/outcomes', async (req, res) => {
     res.send(rows);
 });
 //NEW
-router.get('/:outcome', async (req, res) => {
+router.get('/outcomes/:outcome', async (req, res) => {
     const SO = req.params.outcome;
     // TODO: query sections for 'prof'
     const query = {
@@ -68,18 +68,18 @@ router.get('/:outcome', async (req, res) => {
     res.send(rows);
 });
 //NEW: get all SOs in section
-router.get('/:section_id', async (req, res) => {
+router.get('/:section_id/outcomes', async (req, res) => {
     const sec_id = req.params.section_id;
     // TODO: query sections for 'prof'
     const query = {
-        text: 'select so_number, so_description from section natural join studentoutcome where section_id = $1',
+        text: 'select so_number, so_description from section natural join course natural join studentoutcome where section_id = $1',
         values: [sec_id]
     };
     const { rows } = await db.query(query);
     res.send(rows);
 });
 //NEW: get all assessments in section
-router.get('/:section_id', async (req, res) => {
+router.get('/:section_id/assessments', async (req, res) => {
     const sec_id = req.params.section_id;
     // TODO: query sections for 'prof'
     const query = {
@@ -89,7 +89,7 @@ router.get('/:section_id', async (req, res) => {
     const { rows } = await db.query(query);
     res.send(rows);
 });
-router.post('/outcome', async (req, res) => {
+router.post('/postoutcome/outcome', async (req, res) => {
     const { outcome_num, desc, assess_num, course_code } = req.body;
     // assess_num can initially be undefined
     // TODO: create new student outcome
@@ -101,7 +101,7 @@ router.post('/outcome', async (req, res) => {
     res.send(rows);
 });
 
-router.delete('/:outcome', async (req, res) => {
+router.delete('/deleteoutcome/:outcome', async (req, res) => {
     const outcome_num = parseInt(req.params.outcome);
     // TODO: delete an outcome
     const query = {
@@ -112,7 +112,7 @@ router.delete('/:outcome', async (req, res) => {
     res.send(rows)
 })
 
-router.put('/:outcome', async (req, res) => {
+router.put('/putoutcome/:outcome', async (req, res) => {
     const outcome_num = parseInt(req.params.outcome);
     const {desc, assess_num} = req.body;
     // TODO: update an outcome
@@ -126,7 +126,7 @@ router.put('/:outcome', async (req, res) => {
 })
 
 //NEW: Create assessment
-router.post('/assess', async (req, res) => {
+router.post('/postassess/assess', async (req, res) => {
     const {assess_id, assess_name} = req.body;
     // assess_num can initially be undefined
     // TODO: create new student outcome
@@ -139,7 +139,7 @@ router.post('/assess', async (req, res) => {
 });
 
 //NEW: View assessment
-router.get('/:assess', async (req, res) => {
+router.get('/assessments/:assess', async (req, res) => {
     const assess_id = req.params.assess;
     // TODO: query sections for 'prof'
     const query = {
@@ -151,7 +151,7 @@ router.get('/:assess', async (req, res) => {
 });
 
 //New: modify assessment
-router.put('/:assess', async (req, res) => {
+router.put('/putassess/:assess', async (req, res) => {
     const assess_id = parseInt(req.params.assess);
     const {assess_name} = req.body;
     // TODO: update an outcome
