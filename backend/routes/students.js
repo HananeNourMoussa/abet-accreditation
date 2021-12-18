@@ -3,12 +3,12 @@ const router = express.Router();
 
 const db = require('../db')
 
-router.get('/students', async (req, res) => {
+router.get('/', async (req, res) => {
     const { rows } = await db.query('SELECT * FROM STUDENT');
     res.send(rows);
 });
 
-router.get('/:section_id', async (req, res) => {
+router.get('/section/:section_id', async (req, res) => {
     const section_id = req.params.section_id;
     // TODO: write query to get student from a certain section, given by section_id
     const query = {
@@ -20,7 +20,7 @@ router.get('/:section_id', async (req, res) => {
 });
 
 //NEW
-router.get('/:student_id', async (req, res) => {
+router.get('/details/:student_id', async (req, res) => {
     const std_id = req.params.student_id;
     // TODO: write query to get student from a certain section, given by section_id
     const query = {
@@ -41,7 +41,7 @@ router.post('/new', async (req, res) => {
     res.send(rows)
 });
 
-router.delete('/:std_id', async (req, res) => {
+router.delete('/deletestudent/:std_id', async (req, res) => {
     const std_id = parseInt(req.params.std_id);
     // TODO: write query to delete student with std_id
     const query = {
@@ -52,7 +52,7 @@ router.delete('/:std_id', async (req, res) => {
     res.send(rows)
 })
 
-router.put('/:std_id', async (req, res) => {
+router.put('/putstudent/:std_id', async (req, res) => {
     const std_id = parseInt(req.params.std_id);
     const { first_name, last_name, major } = req.body;
     // TODO: write query to update student
