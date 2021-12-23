@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS course CASCADE;
 
 
 CREATE TABLE professor ( 
-    prof_id VARCHAR(30) primary key,
+    prof_id INTEGER primary key,
     prof_email VARCHAR (255), 
     prof_fname VARCHAR(30),
     prof_lname VARCHAR(30)
@@ -61,20 +61,31 @@ CREATE TABLE enrollment (
     CONSTRAINT related_to_section FOREIGN KEY(section_id) REFERENCES section(section_id) ON UPDATE CASCADE ON DELETE SET NULL,
     PRIMARY KEY(std_id, section_id)
 ); 
+INSERT INTO TABLE professor VALUES (1, 'I.kissani@aui.ma', 'Ilham', 'Kissani'),
+ (2, 'L.Bouanane@aui.ma', 'Lamiae', 'Bouanane'),
+  (3, 'f.chaatit@aui.ma', 'Fouad', 'Chaatit'); 
+INSERT INTO TABLE student VALUES (1, 'Hanane', 'Moussa', 'CS'), (2, 'Leila', 'Moussa', 'CS'), 
+(3, 'Hamza', 'Alaoui', 'CS'), (4, 'Ahmed', 'Jaafari', 'CS'), (5, 'Mehdi', 'Boustani', 'CS'), 
+(6, 'Ayoub', 'Mabkhout', 'CS'), (7, 'Soundous', 'Chamrah', 'CS'), (8, 'Younes', 'Boubbou', 'CS'), 
+(9, 'Ouissal', 'Moumou', 'CS'), (10, 'Omar', 'Moussa', 'EMS'), (11, 'Salma', 'Ibenyahia', 'GE'),
+ (12, 'Aniss', 'Lwissi', 'EMS'); 
+INSERT INTO TABLE assessment VALUES (1, 'Quiz1'), (2, 'Quiz2'), (3, 'Assignment1'), 
+(4, 'Test1'), (5, 'Test2'); 
+INSERT INTO TABLE course VALUES ('CSC1401', 'Computer Programming'),
+ ('CSC2306', 'Object Oriented Programming'), 
+ ('MTH3331', 'Probability and Statistics for Engineers'), 
+ ('EGR2303', 'Engineering Economics'), ('CSC3326', 'Database Systems'),
+  ('MTH1304', 'Discrete Mathematics'); 
+INSERT INTO TABLE section VALUES ('CSC140101','CSC1401', 2), ('CSC230601', 'CSC2306', 2), 
+('MTH333101', 'MTH3331', 3), ('EGR230301', 'EGR2303', 1), ('CSC332601', 'CSC3326', 2); 
+INSERT INTO TABLE grade VALUES (1, 1, 95), (2, 2, 100), (3,1,86), (1,4, 50), (2,4,85),
+ (3,4,56), (4,4,89), (1,5,105),(2,5,94),(3,5,97),(4,5,63),(5,5,57),(5,4,91),(6,4,86),
+ (7,4,45),(8,4,85),(9,4,92),(10,4,90),(11,4,84),(12,4,65); 
+INSERT INTO TABLE studentoutcome VALUES (1, 'Understand Pointers', 4, 'CSC1401'), 
+(2, 'Understand Data Modeling', 1, 'CSC3326'), (3, 'Understand Polymorphism', 2, 'CSC2306'),
+ (4, 'Understand Bayes Theorem', 5, 'MTH3331'); 
+INSERT INTO TABLE enrollment VALUES (1,'CSC140101'), (2,'CSC140101'), (3,'CSC140101'),
+ (4,'CSC140101'), (5,'CSC140101'), (6,'CSC140101'), (7,'CSC140101'),(8,'CSC140101'),
+ (9,'CSC140101'),(10,'CSC140101'),(11,'CSC140101'),(12,'CSC140101'); 
 
-INSERT INTO professor VALUES 
-('90210');
-INSERT INTO student VALUES 
-(80035), (76287), (82500), (84100);
-INSERT INTO assessment VALUES 
-(1, 'Quiz'), (2, 'Test1'), (3, 'Test2');
-INSERT INTO course VALUES 
-('CSC2306', 'Advanced programming in Java'), ('CSC2302', 'Data Structures'), ('MTH3331', 'Probability and statistics');
-INSERT INTO studentoutcome VALUES 
-(1, 'Learn Java Programming', 1, 'CSC2306'), (2, 'Learn ERD', 2, 'CSC2306'), (3, 'Learn Normal Distribution', 3, 'MTH3331');
-INSERT INTO section VALUES 
-('CSC230601', 'CSC2306'),('CSC230202', 'CSC2302'),('MTH333103', 'MTH3331');
-INSERT INTO enrollment VALUES 
-(80035, 'CSC230601'), (76287, 'CSC230202');
-INSERT INTO grade VALUES
-(80035, 1, 85), (76287, 1, 70); 
+

@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 });
 //NEW
 router.get('/:professor_id', async (req, res) => {
-  const prof_id = req.params.professor_id;
+  const prof_id = parseInt(req.params.professor_id);
   // TODO: write query to get student from a certain section, given by section_id
   const query = {
       text: 'Select * from professor where prof_id = $1',
