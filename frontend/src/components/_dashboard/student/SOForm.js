@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useFormik, Form, FormikProvider } from "formik";
+import axios from "axios";
 
 // material
 import {
@@ -14,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { LoadingButton } from "@material-ui/lab";
 import { Save } from "@material-ui/icons";
-
+URL = "http://localhost:3000/"
 // import { LoadingButton } from '@material-ui/lab';
 
 // ----------------------------------------------------------------------
@@ -35,7 +36,13 @@ export default function UserForm({ name, assessment, description }) {
     description: description,
     },
     validationSchema: Schema,
-    onSubmit: () => {
+    onSubmit: (values) => {
+      axios.post(URL+`academics/postoutcome/outcome`,
+       {         
+            outcome_num:Math.floor(Math.random()*100),
+            desc: "Hello World", 
+            course_code: "CSC2306"
+        }).then((res)=> console.log(res.data));
       navigate("/dashboard", { replace: true });
     },
   });
@@ -52,7 +59,7 @@ export default function UserForm({ name, assessment, description }) {
       <Form
         autoComplete="off"
         noValidate
-        onSubmit={handleSubmit}
+        onSubmit={(values) => handleSubmit(values)}
       >
         <Stack>
           <Grid

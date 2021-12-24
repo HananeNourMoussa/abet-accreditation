@@ -24,8 +24,8 @@ const sidebarConfig = [
         path: "/dashboard/students/CSC1401",
       },
       {
-        title: "CSC2303",
-        path: "/dashboard/students/CSC2303",
+        title: "CSC230601",
+        path: "/dashboard/students/CSC230601",
       },
       {
         title: "PHY1402",

@@ -1,5 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 import {
   SOForm,
@@ -19,18 +20,20 @@ import {
 
 // components
 import Page from "../components/Page";
-
+URL = "http://localhost:3000/"
 // ----------------------------------------------------------------------
 
+export default function ModifySO() {
+  const [soDetail, setSODetail] = useState({});
+  const section_id = window.location.pathname.split('/')[5]
 
-export default function CreateSO() {
-  //const [so, setSO] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get(URL + `academics/outcomes/${section_id}`).then((res) => {
-  //     setSO(res.data);
-  //   });
-  // });
+  useEffect(() => {
+    axios.get(URL + `academics/outcomes/${section_id}`)
+    .then((res) => {
+      setSODetail(res.data[0]);
+      console.log(soDetail.so_description)
+    });
+  },[]);
   
   return (
     <Page title="Student Outcome Details">
@@ -76,7 +79,7 @@ export default function CreateSO() {
           >
             <Card sx={{ position: "relative" }}>
               <CardContent>
-                <SOForm name="SO1" assessment="quiz1" description="Modi cum sit in molestias amet qui qui rerum facilis."/>
+                <SOForm name={soDetail.so_number} assessment={"quiz1"} description={soDetail.so_description}/>
               </CardContent>
             </Card>
           </Grid>

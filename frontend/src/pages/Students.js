@@ -1,6 +1,7 @@
 import { filter } from "lodash";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import plusFill from "@iconify/icons-eva/plus-fill";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 // material
@@ -25,6 +26,8 @@ import SearchNotFound from "../components/SearchNotFound";
 import { ListHead, ListToolbar } from "../components/_dashboard/student";
 //
 import USERLIST from "../_mocks_/students";
+
+URL = "http://localhost:3000/"
 
 // ----------------------------------------------------------------------
 
@@ -77,12 +80,14 @@ export default function Student(props) {
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
   const [filterName, setFilterName] = useState("");
+  const section_id = window.location.pathname.split('/')[3]
 
-  // useEffect(() => {
-  //   axios.get(URL + `students/${section_id}`).then((res) => {
-  //     setStudents(res.data);
-  //   });
-  // });
+   useEffect(() => {
+     axios.get(URL + `students/section/${section_id}`).then((res) => {
+     //setStudents(res.data);
+     console.log(res.data)
+    });
+  },[]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";

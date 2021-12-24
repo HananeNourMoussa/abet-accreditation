@@ -1,6 +1,7 @@
 import { filter } from "lodash";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import plusFill from "@iconify/icons-eva/plus-fill";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 // material
@@ -24,7 +25,7 @@ import SearchNotFound from "../components/SearchNotFound";
 import { ListHead, ListToolbar } from "../components/_dashboard/student";
 //
 import ORDERLIST from "../_mocks_/orders";
-
+URL = "http://localhost:3000/"
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
@@ -74,15 +75,17 @@ export default function SO() {
   const navigate = useNavigate();
   const [order, setOrder] = useState("asc");
   const [selected, setSelected] = useState([]);
-  // const [so, setSo] = useState([]);
+  const [so, setSo] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
   const [filterName, setFilterName] = useState("");
+  const section_id = window.location.pathname.split('/')[3]  
 
-  // useEffect(() => {
-  //   axios.get(URL + `academics/outcomes/${section_id}`).then((res) => {
-  //     setSO(res.data);
-  //   });
-  // });
+ useEffect(() => {
+   axios.get(URL + `academics/${section_id}/outcomes`).then((res) => {
+    setSo(res.data);
+     console.log(window.location.pathname.split('/')[3], res.data)
+   });
+ },[]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -163,58 +166,60 @@ export default function SO() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={ORDERLIST.length}
-                  // rowCount={so.length}
+                  //rowCount={ORDERLIST.length}
+                  rowCount={so.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredOrders.map((row) => {
+                  {so.map((row) => {
                     const {
-                      id,
-                      name,
+                      so_number,
+                      so_name,
+                      so_description,
+                     /*  name,
                       description,
                       csc,
                       ge,
                       ems,
                       cscnum,
                       genum,
-                      emsnum,
+                      emsnum, */
                     } = row;
 
                     return (
                       <TableRow
                         hover
-                        key={id}
-                        onClick={() => navigate(`details/${id}`)}
+                        key={so_number}
+                        onClick={() => navigate(`details/${so_number}`)}
                       >
                         <TableCell padding="normal" component="th" scope="row">
                           <Typography variant="subtitle2" noWrap>
-                            {id}
+                            {so_number}
                           </Typography>
                         </TableCell>
-                        <TableCell align="left">{name || "-"}</TableCell>
+                        <TableCell align="left">{ "SO"+so_number || "-"}</TableCell>
                         {/* <TableCell align="left">
                           {description || "-"}
                         </TableCell> */}
                         <TableCell padding="normal" component="th" scope="row">
-                          <Tooltip title={description}>
+                          <Tooltip title={so_description}>
                             <Typography>
-                              {description.length > 70
-                                ? description.slice(0, 70) + "..."
-                                : description}
+                              {so_description.length > 70
+                                ? so_description.slice(0, 70) + "..."
+                                : so_description || "-"}
                             </Typography>
                           </Tooltip>
                         </TableCell>
                         <TableCell align="left">
-                          {csc + "% (" + cscnum + ")"}
+                          {/* csc + "% (" + cscnum + ")" ||*/ "-"}
                         </TableCell>
                         <TableCell align="left">
-                          {ge + "% (" + genum + ")"}
+                          {/*ge + "% (" + genum + ")" || */"-"}
                         </TableCell>
                         <TableCell align="left">
-                          {ems + "% (" + emsnum + ")"}
+                          {/*ems + "% (" + emsnum + ")" ||*/ "-"}
                         </TableCell>
                       </TableRow>
                     );
